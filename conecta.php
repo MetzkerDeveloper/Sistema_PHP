@@ -1,8 +1,8 @@
  <?php
-  $servername = "localhost";
-  $dbusername = "root";
-  $dbpassword = "admin";
-  $dbname = "sistemadecadastro";
+  $servername = ""; //server
+  $dbusername = ""; // usuario
+  $dbpassword = ""; //senha
+  $dbname = ""; //nome da database.
   
   $conn = mysqli_connect($servername, $dbusername, $dbpassword, $dbname);
   if (!$conn) {
