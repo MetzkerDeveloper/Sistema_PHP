@@ -29,7 +29,7 @@
 <body>
   <nav class="navbar bg-secundary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="sistema.php">
         <img src="../imagens/favicon-32x32.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
         | Sistema WM DEV
       </a>

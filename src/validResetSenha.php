@@ -1,41 +1,37 @@
 <?php
-if (isset($_POST['submit'])) {
   include_once('conexao/conecta.php');
-$nome="";
-$email="";
-$telefone="";
-$senha ="";
+  $nome="";
+  $email="";
+  $telefone="";
+  $senha ="";
+  
+  if (isset($_POST['email'])) {
+    $sql = "SELECT * FROM users WHERE email_user = '$_POST[email]'";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    if(!$row){
+      header('Location: validLogin.php');
+      exit;
+    }
+    $email = $row['email_user'];
+    $nome = $row['name_user'];
+    $telefone=$row["phone_user"];
+    $id = $row['id'];
 
-if (isset($_POST['submit'])) {
-  $email = $_POST['email'];
-  $sql = "SELECT * FROM users WHERE email_user = '$email'";
-  $result = $conn->query($sql);
-  $row = $result->fetch_assoc();
-  while(!$row){
-    header('Location: validLogin.php');
-    exit;
+  if (isset($_POST['atualizar'])) {
+     
+      $nome=$_POST["nome"];
+      $email= $row['email_user'];
+      $telefone=$_POST["telefone"];
+      $senha = $_POST['senha'];
+      $senhaHash = md5($senha);
+              
+      $q = "UPDATE users SET name_user = '$nome', phone_user='$telefone', password_user = '$senhaHash' WHERE email_user='$email' ";
+      $r = $conn->query($q);
+      header('Location: index.php');
+
+    }
   }
-  $nome = $row['name_user'];
-  $telefone=$row["phone_user"];
-  $id = $row['id'];
-}else{
-  $nome=$_POST["nome"];
-  $email=$_POST["email"];
-  $telefone=$_POST["telefone"];
-  $senha = $_POST['senha'];
-  $senhaHash = md5($senha);
-          
-  $q = "UPDATE users SET name_user = '$nome', phone_user='$telefone', password_user= '$senhaHash' WHERE git email_user='$email' ";
-  $query = mysqli_query($conn,$q);
-  //$r = $conn->query($q);
-  //$q = "UPDATE users SET `name_user='$nome' , phone_user='$telefone', password_user='$senhaHash' WHERE email_user ='$email'";
-  header('Location: validResetSenha.php');
-  echo "Agora foi, dados atualizado";
-}
-
-}
-
-
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -52,7 +48,7 @@ if (isset($_POST['submit'])) {
 <body>
   <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="index.php">
         <img src="../imagens/favicon-32x32.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
         | Sistema
       </a>
@@ -61,10 +57,10 @@ if (isset($_POST['submit'])) {
   </nav>
   <div class="container mt-5">
     <h2>Atualização dados</h2>
-    <form action="validResetSenha.php" class="form-control" method="POST">
+    <form class="form-control" method="POST">
       <p id="alert"></p>
       <div class='form-floating mb-3'>
-        <input type='email' class='form-control' id='floatingInput' name='email' value='<?php echo $email; ?>' disabled>
+        <input type='email' class='form-control' id='floatingInput' name='email' value='<?php echo $email; ?>'>
         <label for='floatingInput'>Email</label>
       </div>
       <div class='form-floating mb-3 mt-3'>
@@ -76,7 +72,7 @@ if (isset($_POST['submit'])) {
         <label for='floatingInput'>Telefone</label>
       </div>
       <div class='form-floating mb-3'>
-        <input type='password' class='form-control' id='floatingPassword senha' name='senha'
+        <input type='password' class='form-control' id='floatingPassword senha' name='senha' value=''
           placeholder=' Digite sua senha'>
         <label for='floatingPassword'>Senha</label>
       </div>
@@ -85,7 +81,7 @@ if (isset($_POST['submit'])) {
         <label for='floatingPassword'>Confirme Senha</label>
       </div>
       <div class='form-floating mb-3'>
-        <input type='submit' name='submit' class='btn btn-primary' id='floatingPassword' value='Atualizar'>
+        <input type='submit' name='atualizar' class='btn btn-primary' id='floatingPassword' value='Atualizar'>
       </div>
 
     </form>

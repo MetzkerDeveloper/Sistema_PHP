@@ -6,7 +6,7 @@ if(isset($_POST['submit'])){
   $email = $_POST['email'];
   $telefone = $_POST['telefone'];
   $senha = $_POST['senha'];
-  $senhaHash = md5($senha).md5($senha);
+  $senhaHash = md5($senha);
   
   $result = mysqli_query($conn, "SELECT * FROM users WHERE email_user = '$email'");
   
@@ -38,7 +38,7 @@ if(isset($_POST['submit'])){
 <body>
   <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="index.php">
         <img src="../imagens/favicon-32x32.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
         | Sistema
       </a>
