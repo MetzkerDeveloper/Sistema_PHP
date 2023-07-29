@@ -43,6 +43,7 @@
             <a href="cadastro.php" class="link-secondary">Cadastre-se</a>
           </div>
         </form>
+
       </div>
       <div class="col-lg-6 order-lg-1">
         <!-- Imagem -->
