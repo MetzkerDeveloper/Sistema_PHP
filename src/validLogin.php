@@ -6,7 +6,7 @@ if(isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha'])
   include_once('conexao/conecta.php');
   $email = $_POST['email'];
   $senha = $_POST['senha'];
-  $senhaHash = md5($senha).md5($senha);
+  $senhaHash =md5($senha);
   
   
   $sql= "SELECT * FROM users WHERE email_user = '$email' and password_user = '$senhaHash'";

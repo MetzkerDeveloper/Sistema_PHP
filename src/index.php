@@ -39,7 +39,7 @@
 
           <hr>
           <div class="d-flex justify-content-around">
-            <a href="" class="link-secondary">Esqueci minha senha</a>
+            <a href="resetSenha.php" type="submit" name="submit" class="link-secondary">Esqueci minha senha</a>
             <a href="cadastro.php" class="link-secondary">Cadastre-se</a>
           </div>
         </form>
