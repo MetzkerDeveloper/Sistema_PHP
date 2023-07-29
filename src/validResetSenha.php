@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST['submit'])) {
-include_once("conexao/conecta.php");
+  include_once('conexao/conecta.php');
 $nome="";
 $email="";
 $telefone="";
@@ -17,6 +17,7 @@ if (isset($_POST['submit'])) {
   }
   $nome = $row['name_user'];
   $telefone=$row["phone_user"];
+  $id = $row['id'];
 }else{
   $nome=$_POST["nome"];
   $email=$_POST["email"];
@@ -24,10 +25,12 @@ if (isset($_POST['submit'])) {
   $senha = $_POST['senha'];
   $senhaHash = md5($senha);
           
-  
-  $q = "UPDATE users SET name_user='$nome' , phone_user='$phone', password_user='$senhaHash' WHERE email_user ='$email'";
-  $r = $conn->query($q);
-  print_r($r);
+  $q = "UPDATE users SET name_user = '$nome', phone_user='$telefone', password_user= '$senhaHash' WHERE git email_user='$email' ";
+  $query = mysqli_query($conn,$q);
+  //$r = $conn->query($q);
+  //$q = "UPDATE users SET `name_user='$nome' , phone_user='$telefone', password_user='$senhaHash' WHERE email_user ='$email'";
+  header('Location: validResetSenha.php');
+  echo "Agora foi, dados atualizado";
 }
 
 }
@@ -74,12 +77,11 @@ if (isset($_POST['submit'])) {
       </div>
       <div class='form-floating mb-3'>
         <input type='password' class='form-control' id='floatingPassword senha' name='senha'
-          value='<?php echo $senha; ?>' placeholder=' Digite sua senha'>
+          placeholder=' Digite sua senha'>
         <label for='floatingPassword'>Senha</label>
       </div>
       <div class='form-floating mb-3'>
-        <input type='password' class='form-control' id='floatingPassword confirmSenha' placeholder='Confirme sua senha'
-          value='<?php echo $senha; ?>'>
+        <input type='password' class='form-control' id='floatingPassword confirmSenha' placeholder='Confirme sua senha'>
         <label for='floatingPassword'>Confirme Senha</label>
       </div>
       <div class='form-floating mb-3'>
