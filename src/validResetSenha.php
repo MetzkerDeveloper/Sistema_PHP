@@ -10,7 +10,7 @@
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
     if(!$row){
-      header('Location: validLogin.php');
+      header('Location: resetSenha.php');
       exit;
     }
     $email = $row['email_user'];
