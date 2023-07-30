@@ -1,16 +1,16 @@
-<?php 
-  session_start();
-  // print_r($_SESSION);
-  include_once('conexao/conecta.php');
-  if((!isset($_SESSION['email'])== true) and (!isset($_SESSION['senha'])==true)){
-    unset($_SESSION['email']);
-    unset($_SESSION['senha']);
-    header('Location: index.php');
-  }
-  $logado= $_SESSION['email'];
-  $sql= "SELECT name_user FROM users WHERE email_user = '$logado'";
-  $result = $conn -> query($sql);
-  $row = $result->fetch_assoc();
+<?php
+session_start();
+// print_r($_SESSION);
+include_once('conexao/conecta.php');
+if ((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)) {
+  unset($_SESSION['email']);
+  unset($_SESSION['senha']);
+  header('Location: index.php');
+}
+$logado = $_SESSION['email'];
+$sql = "SELECT name_user FROM users WHERE email_user = '$logado'";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
 
 
 ?>
@@ -35,21 +35,55 @@
         <img src="../imagens/favicon-32x32.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
         | Sistema WM DEV
       </a>
+      <?php
+      echo "<p>Bem vindo(a)<u> " . $row['name_user'] . "</u></p>";
+      ?>
       <a href="sair.php" class="btn btn-danger me-5">Sair</a>
     </div>
   </nav>
+  <h2>Cursos disponíveis</h2>
+  <div class="conatiner">
+    <div class="d-flex justify-content-evenly">
+      <div class=" card" style="width: 18rem;">
+        <img src="../imagens/hmtl-e-css.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">HTML 5 e CSS3</h5>
+          <p class="card-text">Curso de Html e CSS para iniciantes.</p>
+          <a href="./cursos/html-e-css.php" class="btn btn-primary">Acessar</a>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <img src="../imagens/Logica-de-Programacao.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Lógica de Programação</h5>
+          <p class="card-text">Curso de Lógica de Programação para iniciantes.</p>
+          <a href="./cursos/logica-de-programacao.php" class="btn btn-primary">Acessar</a>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <img src="../imagens/javascript.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Javascript</h5>
+          <p class="card-text">Curso de Javascript para iniciantes.</p>
+          <a href="./cursos/javascript.php" class="btn btn-primary">Acessar</a>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <img src="../imagens/img-login.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">PHP Moderno</h5>
+          <p class="card-text">Curso de PHP Moderno para iniciantes com uma didática de facil entendimento.</p>
+          <a href="./cursos/php-moderno.php" class="btn btn-primary">Acessar</a>
+        </div>
+      </div>
+    </div>
+  </div>
   <br>
-  <?php 
-  echo "<h3>Bem vindo(a)<u> ".$row['name_user']."</u></h3>";
-  ?>
-  <br>
-  <div class="container d-flex justify-content-center">
-    <iframe width="650" height="450"
-      src="https://www.youtube.com/embed/videoseries?list=PLHz_AreHm4dlFPrCXCmd5g92860x_Pbr_"
-      title="YouTube video player" frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen>
-    </iframe>
+
+  <div class=" text-muted text-center">
+    <footer>
+      <p>&copy; wm | developer 2023</p>
+    </footer>
   </div>
 </body>
 
