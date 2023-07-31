@@ -5,7 +5,7 @@
   $telefone="";
   $senha ="";
   
-  if (isset($_POST['email'])) {
+  if (strip_tags(isset($_POST['email']))) {
     $sql = "SELECT * FROM users WHERE email_user = '$_POST[email]'";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
@@ -20,10 +20,10 @@
 
   if (isset($_POST['atualizar'])) {
      
-      $nome=$_POST["nome"];
+      $nome= strip_tags($_POST["nome"]);
       $email= $row['email_user'];
-      $telefone=$_POST["telefone"];
-      $senha = $_POST['senha'];
+      $telefone= strip_tags($_POST["telefone"]);
+      $senha = strip_tags($_POST['senha']);
       $senhaHash = md5($senha);
               
       $q = "UPDATE users SET name_user = '$nome', phone_user='$telefone', password_user = '$senhaHash' WHERE email_user='$email' ";

@@ -2,10 +2,10 @@
 include_once('conexao/conecta.php');
 
 if(isset($_POST['submit'])){
-  $nome = $_POST['nome'];
-  $email = $_POST['email'];
-  $telefone = $_POST['telefone'];
-  $senha = $_POST['senha'];
+  $nome = strip_tags($_POST['nome']);
+  $email =strip_tags( $_POST['email']);
+  $telefone = strip_tags($_POST['telefone']);
+  $senha =strip_tags( $_POST['senha']);
   $senhaHash = md5($senha);
   
   $result = mysqli_query($conn, "SELECT * FROM users WHERE email_user = '$email'");

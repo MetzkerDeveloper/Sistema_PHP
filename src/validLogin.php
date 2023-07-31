@@ -4,8 +4,8 @@ session_start();
 if(isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha'])){
   // acessa sistema
   include_once('conexao/conecta.php');
-  $email = $_POST['email'];
-  $senha = $_POST['senha'];
+  $email = strip_tags($_POST['email']);
+  $senha = strip_tags( $_POST['senha']);
   $senhaHash =md5($senha);
   
   
