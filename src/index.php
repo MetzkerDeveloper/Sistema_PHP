@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['message'])) {
+} else {
+  echo "<script>window.alert('E-mail ou senha incorretos. Tente novamente!')</script>";
+}
+?>
 <!doctype html>
 <html lang="pt-br">
 
@@ -7,10 +14,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="../imagens/favicon-32x32.png">
   <link rel="shortcut icon" href="./imagens/favicon-32x32.png" />
   <title>WM | Sistema</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
-
 
 <body>
   <nav class="navbar bg-body-tertiary">
@@ -36,16 +41,13 @@
             <label for="exampleInputPassword1" class="form-label">Senha</label>
             <input type="password" class="form-control" id="exampleInputPassword1" name="senha">
           </div>
-
           <button type="submit" name="submit" class="btn btn-primary">Acessar</button>
-
           <hr>
           <div class="d-flex justify-content-around">
             <a href="resetSenha.php" class="link-secondary">Esqueci minha senha</a>
             <a href="cadastro.php" class="link-secondary">Cadastre-se</a>
           </div>
         </form>
-
       </div>
       <div class="col-lg-6 order-lg-1">
         <!-- Imagem -->
@@ -53,9 +55,7 @@
       </div>
     </div>
   </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
   </script>
 </body>
 
