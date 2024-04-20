@@ -15,7 +15,7 @@
 <body>
   <nav class="navbar bg-secundary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="sistema.php">
+      <a class="navbar-brand" href="../sistema.php">
         Sistema WM DEV
       </a>
 

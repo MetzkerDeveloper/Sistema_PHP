@@ -38,7 +38,9 @@ $row = $result->fetch_assoc();
       <?php
       echo "<p>Bem vindo(a)<u> " . $row['name_user'] . "</u></p>";
       ?>
-      <a href="sair.php" class="btn btn-danger me-5">Sair</a>
+        <form action="sair.php" method="post">
+          <button class="btn btn-danger me-5" >Sair</button>
+        </form>
     </div>
   </nav>
   <h2>Cursos disponíveis</h2>
